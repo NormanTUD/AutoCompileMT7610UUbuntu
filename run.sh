@@ -6,7 +6,7 @@ export DRIVERKERNELPATH=/usr/src/$MODULENAME-1.0
 export DRIVERNAME=$MODULENAME/1.0
 export KSRC=/lib/modules/$(uname -r)/source
 export TARGET_ARCH=amd64
-export GITHUBPATH=https://github.com/xtknight/mt7610u-linksys-ae6000-wifi-fixes.git
+export GITHUBPATH=https://github.com/cyangy/A6210-mt76x2u_Ubuntu.git
 
 function errormsg () {
 	echo -e "\e[31m$1\e[0m"
@@ -73,7 +73,7 @@ runcode "Cloning git driver repository to $CLONEDIR" "git clone $GITHUBPATH $CLO
 runcode "Changing dir to $CLONEDIR" "cd $CLONEDIR"
 
 runcode "Cleaning directory $CLONEDIR" "make"
-runcode "Making driver" "make"
+runcode "Making driver" "make -j $(expr $(nproc) + 1)"
 runcode "Installing driver" "make install"
 runcode "Inserting driver into Kernel" "modprobe mac80211"
 runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt7610u_sta"
