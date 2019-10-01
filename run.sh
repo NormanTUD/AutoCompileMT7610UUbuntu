@@ -78,7 +78,11 @@ runcode "Installing driver" "make install"
 runcode "Inserting driver into Kernel" "modprobe mac80211"
 runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt76"
 
-runcode "Adding mt76 to /etc/modules" "cat 'mt76' >> /etc/modules"
+if cat /etc/modules | egrep -q "^mt76"; then
+	okmsg "Already autoloading mt76"
+else
+	runcode "Adding mt76 to /etc/modules" "echo 'mt76' >> /etc/modules"
+fi
 
 runcode "Auto-removing old packages" "apt-get -y autoremove"
 
