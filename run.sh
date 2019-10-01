@@ -78,7 +78,6 @@ runcode "Making driver" "make"
 runcode "Installing driver" "make install"
 runcode "Inserting driver into Kernel" "modprobe mac80211"
 runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt7610u_sta"
-#runcode "Inserting driver module into Kernel" "insmod ./mt7601u.ko"
 
 runcode "Auto-removing old packages" "apt-get -y autoremove"
 
