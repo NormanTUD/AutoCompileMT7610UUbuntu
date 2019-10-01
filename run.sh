@@ -78,6 +78,9 @@ runcode "Installing driver" "make install"
 runcode "Inserting driver into Kernel" "modprobe mac80211"
 runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt76"
 
+runcode "Adding mt76 to /etc/modules" "cat 'mt76' >> /etc/modules"
+
 runcode "Auto-removing old packages" "apt-get -y autoremove"
+
 
 okmsg "Ok. It seems like everything worked. Please restart your computer and plugin the Wifi-adapter.."
