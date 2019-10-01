@@ -81,4 +81,4 @@ runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt7610u_sta"
 
 runcode "Auto-removing old packages" "apt-get -y autoremove"
 
-okmsg "Ok. It seems like everything worked. Please restart your computer."
+okmsg "Ok. It seems like everything worked. Please restart your computer and plugin the Wifi-adapter.."
