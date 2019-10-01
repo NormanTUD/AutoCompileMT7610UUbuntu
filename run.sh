@@ -55,10 +55,10 @@ else
 	okmsg "The network adapter is disconnected (leave it this way until the setup is finished)"
 fi
 
-if lsmod | egrep -q "^mt7610u_sta"; then
-	runcode "The kernel module $MODULENAME is already loaded. Removing it for now..." "rmmod mt7610u_sta"
+if lsmod | egrep -q "^mt76"; then
+	runcode "The kernel module $MODULENAME is already loaded. Removing it for now..." "rmmod mt76"
 else
-	okmsg "The kernel module mt7610u_sta is not already loaded. Going on with setup."
+	okmsg "The kernel module mt76 is not already loaded. Going on with setup."
 fi
 
 runcode "Installing git" "apt-get install -y git"
