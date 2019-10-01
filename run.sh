@@ -76,7 +76,7 @@ runcode "Cleaning directory $CLONEDIR" "make"
 runcode "Making driver" "make -j $(expr $(nproc) + 1)"
 runcode "Installing driver" "make install"
 runcode "Inserting driver into Kernel" "modprobe mac80211"
-runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt7610u_sta"
+runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt76"
 
 runcode "Auto-removing old packages" "apt-get -y autoremove"
 
