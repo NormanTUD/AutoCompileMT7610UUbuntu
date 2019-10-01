@@ -17,7 +17,7 @@ function printcode () {
 }
 
 function okmsg () {
-	echo -e "\e[42m\e[36m$1\e[0m"
+	echo -e "\e[42m\e[30m$1\e[0m"
 }
 
 function msg () {
