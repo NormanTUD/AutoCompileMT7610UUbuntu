@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export MODULENAME=mt7610u
+export MODULENAME=mt76
 export CLONEDIR=~/src/$MODULENAME
 export DRIVERKERNELPATH=/usr/src/$MODULENAME-1.0
 export DRIVERNAME=$MODULENAME/1.0
@@ -55,10 +55,10 @@ else
 	okmsg "The network adapter is disconnected (leave it this way until the setup is finished)"
 fi
 
-if lsmod | egrep -q "^mt76"; then
-	runcode "The kernel module $MODULENAME is already loaded. Removing it for now..." "rmmod mt76"
+if lsmod | egrep -q "^$MODULENAME"; then
+	runcode "The kernel module $MODULENAME is already loaded. Removing it for now..." "rmmod $MODULENAME"
 else
-	okmsg "The kernel module mt76 is not already loaded. Going on with setup."
+	okmsg "The kernel module $MODULENAME is not already loaded. Going on with setup."
 fi
 
 runcode "Installing git" "apt-get install -y git"
@@ -76,12 +76,12 @@ runcode "Cleaning directory $CLONEDIR" "make"
 runcode "Making driver" "make -j $(expr $(nproc) + 1)"
 runcode "Installing driver" "make install"
 runcode "Inserting driver into Kernel" "modprobe mac80211"
-runcode "Modprobing kernel module for $DRIVERNAME" "modprobe mt76"
+runcode "Modprobing kernel module for $MODULENAME" "modprobe $MODULENAME"
 
-if cat /etc/modules | egrep -q "^mt76"; then
-	okmsg "Already autoloading mt76"
+if cat /etc/modules | egrep -q "^$MODULENAME"; then
+	okmsg "Already autoloading $MODULENAME"
 else
-	runcode "Adding mt76 to /etc/modules" "echo 'mt76' >> /etc/modules"
+	runcode "Adding $MODULENAME to /etc/modules" "echo '$MODULENAME' >> /etc/modules"
 fi
 
 runcode "Auto-removing old packages" "apt-get -y autoremove"
