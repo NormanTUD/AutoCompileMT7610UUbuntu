@@ -55,12 +55,11 @@ else
 	okmsg "The network adapter is disconnected (leave it this way until the setup is finished)"
 fi
 
-if lsmod | egrep -q "^mt7601u"; then
-	runcode "The kernel module $MODULENAME is already loaded. Removing it for now..." "rmmod mt7601u"
+if lsmod | egrep -q "^mt7610u_sta"; then
+	runcode "The kernel module $MODULENAME is already loaded. Removing it for now..." "rmmod mt7610u_sta"
 else
-	okmsg "The kernel module mt7601u is not already loaded. Going on with setup."
+	okmsg "The kernel module mt7610u_sta is not already loaded. Going on with setup."
 fi
-
 
 runcode "Installing git" "apt-get install -y git"
 runcode "Installing build-essentials" "apt-get install -y build-essential"
