@@ -64,7 +64,7 @@ fi
 
 runcode "Installing git" "apt-get install -y git"
 runcode "Installing build-essentials" "apt-get install -y build-essential"
-runcode "Installing dkms" "apt-get -y install dkms"
+#runcode "Installing dkms" "apt-get -y install dkms"
 runcode "Downloading kernel source" "apt-get install -y linux-headers-$(uname -r)"
 
 runcode "Removing old $CLONEDIR if it exists" "rm -rf $CLONEDIR"
